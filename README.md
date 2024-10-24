@@ -38,7 +38,7 @@ improvement as I go!
 
 Here are some resources I'm drawing from as I learn:
 
-- [Matt Parson’s blog post on the Layer Cake
+- [Matt Parsons’s blog post on the Layer Cake
   Pattern](https://www.parsonsmatt.org/2018/03/22/three_layer_haskell_cake.html):
   This article explains the three-layer architecture in Haskell and gives
   examples of how to structure an application using this pattern.
