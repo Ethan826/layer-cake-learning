@@ -6,6 +6,7 @@ import AppM (AppEnv (..))
 import Data.Aeson (eitherDecode)
 import qualified Data.ByteString.Lazy as B
 import Data.IORef (newIORef)
+import Data.Maybe (fromMaybe, listToMaybe)
 import Effects (FileSystem (..), JsonParser (..))
 import System.Environment (getArgs)
 import Types (User)
@@ -27,8 +28,8 @@ jsonParser = JsonParser{parseJson = parseJson'}
 getAppEnv :: IO AppEnv
 getAppEnv = do
   args <- getArgs
-  let inputPath = if not (null args) then head args else "input.json"
-  let outputPath = if length args > 1 then args !! 1 else "summary.json"
+  let inputPath = fromMaybe "input.json" (listToMaybe args)
+  let outputPath = fromMaybe "summary.json" (listToMaybe (drop 1 args))
   envCounter <- newIORef 0
   pure
     AppEnv
